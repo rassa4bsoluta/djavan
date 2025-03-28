@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Djavan</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #font-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+        }
+        .btn-font {
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <header class=" p-5">
+        <nav class="container d-flex justify-content-between align-items-center">
+            <img src="img/jazz.png" alt="Logotipo da Tropicália" class="nav-img " loading="lazy">
+            <ul class="nav mt-5">
+                <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+            </ul>          
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <section id="inicio" class="my-5">
+            <div class="inicio-fundo d-flex justify-content-between align-items-center">
+                <div class="esquerda-conteudo">
+                    <h1 class="display-4 text-white fst-italic fw-bold">Vocês conhecem Djavan?</h1>
+                    <a href="#tropicalia" class="btn btn-primary btn-lg botao-inicio fw-semibold">Quero conhecer!</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="tropicalia" class="my-5 pt-6 secao-tropicalia">
+            <div class="container d-flex align-items-center ">
+                <div class="col-5">
+                    <h2>Quem é Djavan?</h2>
+                    <p class="p-2">Djavan é um documentário que conta a história do cantor brasileiro Djavan Caetano Viana...</p>
+                    <button id="playButton" class="btn btn-success mt-3">▶️ Tocar Música</button>
+                    <audio id="audio" src="Djavan Oceano Áudio Oficial.mp3"></audio>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria">
+            <h2 class="text-center pt-5">Galeria</h2>
+            <div class="container p-3 mt-3 fundo-galeria ">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-4">
+                        <img src="img/Djavan_San_Javier_Jazz_2023_08.png" class="img-fluid rounded-5" loading="lazy">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="img/2.png" class="img-fluid rounded-5" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center p-3 fst-italic">
+        <p>Acesse nossas redes:</p>
+        <i class="bi bi-whatsapp"></i>
+        <i class="bi bi-instagram"></i>
+        <i class="bi bi-tiktok"></i>
+    </footer>
+
+    <div id="font-buttons">
+        <button id="increase-font" class="btn btn-font">A+</button>
+        <button id="decrease-font" class="btn btn-font">A-</button>
+    </div>
+
+    <script>
+        const audio = document.getElementById('audio'); 
+        const playButton = document.getElementById('playButton');
+        const increaseFontButton = document.getElementById('increase-font');
+        const decreaseFontButton = document.getElementById('decrease-font');
+        let fontSize = 16;
+        
+        playButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playButton.textContent = '⏸️ Pausar Música';
+            } else {
+                audio.pause();
+                playButton.textContent = '▶️ Tocar Música';
+            }
+        });
+        
+        increaseFontButton.addEventListener('click', () => {
+            fontSize += 2;
+            document.body.style.fontSize = fontSize + 'px';
+        });
+        
+        decreaseFontButton.addEventListener('click', () => {
+            if (fontSize > 10) {
+                fontSize -= 2;
+                document.body.style.fontSize = fontSize + 'px';
+            }
+        });
+    </script>
+</body>
+</html>
